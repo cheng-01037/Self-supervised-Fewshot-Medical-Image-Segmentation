@@ -22,7 +22,22 @@ If you find this code base useful, please cite our paper. Thanks!
 
 ### 1. Setup
 
+Install essential tools (see `requirements.txt`) 
 
+```
+jupyter==1.0.0
+nibabel==2.5.1
+numpy==1.15.1
+opencv-python==4.1.1.26
+Pillow==5.3.0
+scikit-image==0.14.0
+scipy==1.1.0
+SimpleITK==1.2.3
+tensorboardX==1.4
+torch==1.3.0
+torchvision==0.4.1
+tqdm==4.32.2
+```
 
 ### 2. Data Pre-processing and Pseudolabel Generation
 
