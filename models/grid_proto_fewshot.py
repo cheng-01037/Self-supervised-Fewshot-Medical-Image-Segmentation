@@ -1,7 +1,6 @@
 """
 ALPNet
 """
-
 from collections import OrderedDict
 import torch
 import torch.nn as nn
@@ -20,7 +19,7 @@ FG_PROT_MODE = 'gridconv+' # using both local and global prototype
 BG_PROT_MODE = 'gridconv'  # using local prototype only. Also 'mask' refers to using global prototype only (as done in vanilla PANet)
 
 # thresholds for deciding class of prototypes
-FG_THRESH = 0.95 
+FG_THRESH = 0.95
 BG_THRESH = 0.95
 
 class FewShotSeg(nn.Module):
@@ -220,7 +219,7 @@ class FewShotSeg(nn.Module):
                 supp_pred = F.interpolate(supp_pred, size=fore_mask.shape[-2:], mode='bilinear')
 
                 # Construct the support Ground-Truth segmentation
-                supp_label = torch.full_like(fore_mask[way, shot], 255, 
+                supp_label = torch.full_like(fore_mask[way, shot], 255,
                                              device=img_fts.device).long()
                 supp_label[fore_mask[way, shot] == 1] = 1
                 supp_label[back_mask[way, shot] == 1] = 0
