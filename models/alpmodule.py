@@ -1,7 +1,6 @@
 """
 ALPModule
 """
-
 import torch
 import math
 from torch import nn
@@ -64,10 +63,10 @@ class MultiProtoAsConv(nn.Module):
             if vis_sim:
                 vis_dict['raw_local_sims'] = pred_mask
             return pred_mask.unsqueeze(1), [pred_mask], vis_dict  # just a placeholder. pred_mask returned as [1, way(1), h, w]
-        
+
         # no need to merge with gridconv+
         else mode == 'gridconv': # using local prototypes only
-            
+
             input_size = qry.shape
             nch = input_size[1]
 
@@ -110,32 +109,32 @@ class MultiProtoAsConv(nn.Module):
 
             sup_nshot = sup_x.shape[0]
 
-            n_sup_x = n_sup_x.view(sup_nshot, nch, -1).permute(0,2,1).unsqueeze(0) 
+            n_sup_x = n_sup_x.view(sup_nshot, nch, -1).permute(0,2,1).unsqueeze(0)
             n_sup_x = n_sup_x.reshape(1, -1, nch).unsqueeze(0)
 
             sup_y_g = F.avg_pool2d(sup_y, val_wsize) if isval else self.avg_pool_op(sup_y)
 
             sup_y_g = sup_y_g.view( sup_nshot, 1, -1  ).permute(1, 0, 2).view(1, -1).unsqueeze(0)
 
-            protos = n_sup_x[sup_y_g > thresh, :] 
+            protos = n_sup_x[sup_y_g > thresh, :]
 
 
             glb_proto = torch.sum(sup_x * sup_y, dim=(-1, -2)) \
-                / (sup_y.sum(dim=(-1, -2)) + 1e-5) 
+                / (sup_y.sum(dim=(-1, -2)) + 1e-5)
 
             pro_n = safe_norm( torch.cat( [protos, glb_proto], dim = 0 ) )
 
-            qry_n = safe_norm(qry) 
+            qry_n = safe_norm(qry)
 
             dists = F.conv2d(qry_n, pro_n[..., None, None]) * 20
 
             pred_grid = torch.sum(F.softmax(dists, dim = 1) * dists, dim = 1, keepdim = True)
-            raw_local_sims = dists.detach() 
+            raw_local_sims = dists.detach()
 
 
             debug_assign = dists.argmax(dim = 1).float()
 
-            vis_dict = {'proto_assign': debug_assign} 
+            vis_dict = {'proto_assign': debug_assign}
             if vis_sim:
                 vis_dict['raw_local_sims'] = dists.clone().detach()
 
@@ -143,4 +142,4 @@ class MultiProtoAsConv(nn.Module):
 
         else:
             raise NotImplementedError
- 
+
