@@ -48,7 +48,7 @@ tqdm==4.32.2
 
 Abdominal MRI:
 
-1. Convert downloaded CHAOS dataset (T2 fold) to `nii` files in 3D for the ease of reading
+1. Convert downloaded [CHAOS dataset](https://chaos.grand-challenge.org/) (T2 fold) to `nii` files in 3D for the ease of reading
 
 run `./data_preprocessing/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files
 
@@ -66,7 +66,7 @@ run `./data_preprocessing/CHAOST2/pseudolabel_gen.ipynb`
 
 run `./data_preprocessing/CHAOST2/class_slice_index_gen.ipynb`
 
-You are also highly welcomed to use this pre-processing pipeline for evaluating few-shot medical image segmentation in future.
+You are also highly welcomed to use this pre-processing pipeline for evaluating few-shot medical image segmentation in future. Please consider citing our paper and the the original [CHAOS challenge](https://chaos.grand-challenge.org/) if you find this pipeline useful. Thanks. 
 
 ### 3. Running
 
