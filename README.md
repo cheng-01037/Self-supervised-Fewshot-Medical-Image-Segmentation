@@ -44,16 +44,39 @@ torchvision==0.4.1
 tqdm==4.32.2
 ```
 
-### 2. Data Pre-processing and Pseudolabel Generation
+### 2. Data Pre-processing and Pseudolabel Generation 
 
+Abdominal MRI:
 
+1. Converting downloaded [CHAOS dataset](https://chaos.grand-challenge.org/) (T2 fold) to `nii` files in 3D for the ease of reading
+
+run `./data_preprocessing/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files
+
+run `./data_preprocessing/CHAOST2/png_gth_to_nii.ipynp` to convert ground truth with `png` format to nifti
+
+2. Pre-processing downloaded images
+
+run `./data_preprocessing/CHAOST2/image_normalize.ipynb`
+
+3. Generating pseudolabels
+
+run `./data_preprocessing/CHAOST2/pseudolabel_gen.ipynb`
+
+4. Setting up experiments, e.g. noting class-slice indexing
+
+run `./data_preprocessing/CHAOST2/class_slice_index_gen.ipynb`
+
+You are also highly welcomed to use this pre-processing pipeline for evaluating few-shot medical image segmentation in future. Please consider citing our paper and the the original [CHAOS challenge](https://chaos.grand-challenge.org/) if you find this pipeline useful. Thanks! 
 
 ### 3. Running
 
-
+run `examples/train_ssl_abdominal_mri.sh`
 
 ### 4. Acknowledgement
 
-This code is based on vanilla [PANet] (https://github.com/kaixin96/PANet)(ICCV'19) by [Kaixin Wang](https://github.com/kaixin96. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
+This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
 
+### Contacts:
+
+Please email to c.ouyang@imperial.ac.uk for questions and information.
 
