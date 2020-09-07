@@ -28,6 +28,7 @@ class SuperpixelDataset(BaseDataset):
             base_dir:           directory of dataset
             idx_split:          index of data split as we will do cross validation
             mode:               'train', 'val'. 
+            nsup:               number of scans used as support. currently idle for superpixel dataset
             transforms:         data transform (augmentation) function
             scan_per_load:      loading a portion of the entire dataset, in case that the dataset is too large to fit into the memory. Set to -1 if loading the entire dataset at one time
             num_rep:            Number of augmentation applied for a same pseudolabel

@@ -189,11 +189,7 @@ class ValidationDataset(Dataset):
         dataset:
             source dataset with a __getitem__ method
         test_classes:
-            test class indices
-        vol_mode: ('whole', 'margin')
-            how large a volume is defined
-            using the entire image or just leave <z_margin> slices up and down the organ
-
+            test classes
         npart: int. number of parts, used for evaluation when assigning support images
 
     """
@@ -212,9 +208,9 @@ class ValidationDataset(Dataset):
     def get_curr_cls(self):
         return self.__curr_cls
 
-    def __read_dataset(self):
+    def read_dataset(self):
         """
-        override original __read_dataset to allow reading with z_margin
+        override original read_dataset to allow reading with z_margin
         """
         raise NotImplementedError
 

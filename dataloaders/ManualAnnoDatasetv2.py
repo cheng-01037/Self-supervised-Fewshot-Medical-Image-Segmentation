@@ -31,8 +31,8 @@ class ManualAnnoDataset(BaseDataset):
             transforms:         data transform (augmentation) function
             min_fg:             minimum number of positive pixels in a 2D slice, mainly for stablize training when trained on manually labeled dataset
             scan_per_load:      loading a portion of the entire dataset, in case that the dataset is too large to fit into the memory. Set to -1 if loading the entire dataset at one time
-            num_rep:            number of augmentation applied for a same pseudolabel
             tile_z_dim:         number of identical slices to tile along channel dimension, for fitting 2D single-channel medical images into off-the-shelf networks designed for RGB natural images
+            nsup:               number of support scans
             fix_length:         fix the length of dataset
             exclude_list:       Labels to be excluded
             extern_normalize_function:  normalization function used for data pre-processing  
@@ -158,7 +158,7 @@ class ManualAnnoDataset(BaseDataset):
 
             lb = np.float32(lb)
 
-            img = img[:256, :256, :]
+            img = img[:256, :256, :] # FIXME a bug in shape from the pre-processing code
             lb = lb[:256, :256, :]
 
             assert img.shape[-1] == lb.shape[-1]
@@ -424,7 +424,7 @@ class ManualAnnoDataset(BaseDataset):
 
                 })
 
-            # do the concat, and add to out_buffer
+            # do the concat, and add to output_buffer
 
         # post-processing, including keeping the foreground and suppressing background.
         support_images = []
@@ -434,8 +434,6 @@ class ManualAnnoDataset(BaseDataset):
             support_images.append(itm["image"])
             support_class.append(curr_class)
             support_mask.append(  self.getMaskMedImg( itm["label"], curr_class, class_idx  ))
-
-        # return structure
 
         return {'class_ids': [support_class],
             'support_images': [support_images], #

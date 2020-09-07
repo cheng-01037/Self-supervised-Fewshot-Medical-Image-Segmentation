@@ -20,9 +20,8 @@ DATASET_INFO = {
                 'pa_all': set(range(1, 5)),
                 0: set([1, 4]), # upper_abdomen, leaving kidneies as testing classes
                 1: set([2, 3]), # lower_abdomen
+                },
             },
-
-    },
 
     "SABS": {
             'PSEU_LABEL_NAME': ["BGD", "SUPFG"],
@@ -39,12 +38,6 @@ DATASET_INFO = {
             }
 
 }
-
-
-
-
-
-
 
 def read_nii_bysitk(input_fid, peel_info = False):
     """ read nii to numpy through simpleitk
@@ -63,8 +56,6 @@ def read_nii_bysitk(input_fid, peel_info = False):
         return img_np, info_obj
     else:
         return img_np
-
-
 
 def get_normalize_op(modality, fids):
     """

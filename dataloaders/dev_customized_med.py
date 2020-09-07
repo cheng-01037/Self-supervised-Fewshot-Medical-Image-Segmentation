@@ -179,7 +179,7 @@ def med_fewshot(dataset_name, base_dir, idx_split, mode, scan_per_load,
         n_shots:
             n-shot few-shot learning
         max_iters_per_load:
-            number of pairs per load
+            number of pairs per load (epoch size)
         n_queries:
             number of query images
         fix_parent_len:
@@ -187,11 +187,11 @@ def med_fewshot(dataset_name, base_dir, idx_split, mode, scan_per_load,
     """
     med_set = ManualAnnoDataset
 
-    if len(exclude_list) > 0:
-        mydataset = med_set(which_dataset = dataset_name, base_dir=base_dir, idx_split = idx_split, mode = mode, scan_per_load = scan_per_load, transforms=transforms, min_fg = min_fg, fix_length = fix_parent_len, exclude_list = exclude_list, **kwargs)
-    else:
-        mydataset = med_set(which_dataset = dataset_name, base_dir=base_dir, idx_split = idx_split, mode = mode, scan_per_load = scan_per_load, transforms=transforms, min_fg = min_fg, fix_length = fix_parent_len,
-        **kwargs)
+
+    mydataset = med_set(which_dataset = dataset_name, base_dir=base_dir, idx_split = idx_split, mode = mode,\
+         scan_per_load = scan_per_load, transforms=transforms, min_fg = min_fg, fix_length = fix_parent_len,\
+         exclude_list = exclude_list, **kwargs)
+
     mydataset.add_attrib('basic', attrib_basic, {})
 
     # Create sub-datasets and add class_id attribute. Here the class file is internally loaded and reloaded inside

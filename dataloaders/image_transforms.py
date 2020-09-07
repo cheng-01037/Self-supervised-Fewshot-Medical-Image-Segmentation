@@ -61,11 +61,7 @@ def get_shear_matrix(shear_angle):
                              [0, 0, 1]])
     return shear_matrix
 
-
-
-
 ###### AFFINE TRANSFORM ######
-
 class RandomAffine(object):
     """Apply random affine transformation on a numpy.ndarray (H x W x C)
     Comment by co1818: this is still doing affine on 2d (H x W plane).
@@ -183,8 +179,6 @@ def affine_transform_via_M(image, M, borderMode=cv2.BORDER_CONSTANT, interp=cv2.
     return warped
 
 ###### ELASTIC TRANSFORM ######
-
-
 def elastic_transform(image, alpha=1000, sigma=30, spline_order=1, mode='nearest', random_state=np.random):
     """Elastic deformation of image as described in [Simard2003]_.
     .. [Simard2003] Simard, Steinkraus and Platt, "Best Practices for
