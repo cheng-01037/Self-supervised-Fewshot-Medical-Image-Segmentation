@@ -411,9 +411,8 @@ def main(_run, _config, _log):
                     trainloader.dataset.reload_buffer()
                     print(f'###### New dataset with {len(trainloader.dataset)} slices has been loaded ######')
 
-
             if (i_iter - 2) > _config['n_steps']:
-                return 1
+                return 1 # finish up
 
     _log.info('###### Saving model ######')
     torch.save(model.state_dict(),
