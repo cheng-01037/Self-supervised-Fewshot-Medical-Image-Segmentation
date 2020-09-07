@@ -27,14 +27,17 @@ If you find this code base useful, please cite our paper. Thanks!
 Install essential tools (see `requirements.txt`) 
 
 ```
+dcm2nii
+json5==0.8.5
 jupyter==1.0.0
 nibabel==2.5.1
 numpy==1.15.1
 opencv-python==4.1.1.26
 Pillow==5.3.0
+sacred==0.7.5
 scikit-image==0.14.0
-scipy==1.1.0
 SimpleITK==1.2.3
+ensorboard==2.1.0
 tensorboardX==1.4
 torch==1.3.0
 torchvision==0.4.1
