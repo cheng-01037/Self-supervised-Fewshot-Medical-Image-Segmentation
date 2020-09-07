@@ -24,7 +24,7 @@ If you find this code base useful, please cite our paper. Thanks!
 
 ### 1. Setup
 
-Install essential tools (see `requirements.txt`) 
+Install essential dependencies (see `requirements.txt`) 
 
 ```
 dcm2nii
