@@ -205,9 +205,13 @@ def main(_run, _config, _log):
 
             # print loss and take snapshots
             if (i_iter + 1) % _config['print_interval'] == 0:
-                # FIXME: obviously a bug from the original PANet script while it does not hurt training process. Fix this
-                loss = log_loss['loss'] / (i_iter + 1)
-                align_loss = log_loss['align_loss'] / (i_iter + 1)
+
+                loss = log_loss['loss'] / _config['print_interval']
+                align_loss = log_loss['align_loss'] / _config['print_interval']
+
+                log_loss['loss'] = 0
+                log_loss['align_loss'] = 0
+
                 print(f'step {i_iter+1}: loss: {loss}, align_loss: {align_loss},')
 
                 # write to tensorboard
