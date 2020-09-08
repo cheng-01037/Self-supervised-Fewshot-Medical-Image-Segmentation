@@ -24,11 +24,6 @@ SUPP_ID='[4]' # using the fifth scan in the validation set as support.
 
 echo ===================================
 
-if [ ! -d $LOGDIR ]
-then
-    mkdir $LOGDIR
-fi
-
 for EVAL_FOLD in "${ALL_EV[@]}"
 do
     for SUPERPIX_SCALE in "${ALL_SCALE[@]}"
