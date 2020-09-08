@@ -20,8 +20,8 @@ from models.grid_proto_fewshot import FewShotSeg
 from dataloaders.dev_customized_med import med_fewshot, med_fewshot_val
 from dataloaders.GenericSuperDatasetv2 import SuperpixelDataset
 from dataloaders.ManualAnnoDatasetv2 import ManualAnnoDataset
+from dataloaders.dataset_utils import DATASET_INFO
 import dataloaders.augutils as myaug
-from dataloaders.dataset_utils import CLASS_LABELS
 
 from util.utils import set_seed, t2n, to01, compose_wt_simple
 from util.metric import Metric

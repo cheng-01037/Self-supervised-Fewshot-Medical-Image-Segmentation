@@ -1,18 +1,16 @@
 # train a model to segment abdominal MRI (T2 fold of CHAOS challenge)
-
-GPUID1=0
+GPUID1=1
 export CUDA_VISIBLE_DEVICES=$GPUID1
 
 PROTO_GRID=8 # using 32 / 8 = 4, 4-by-4 prototype pooling window during training
 CPT="myexperiments"
-DATASET='CHAOST2_Superpix' 
+DATASET='CHAOST2_Superpix'
 NWORKER=4
 
 NSTEP=100100
 DECAY=0.95
 
 MAX_ITER=1000 # defines the size of an epoch
-
 VAL_INTERVAL=25000 # interval for running validation
 SEED='1234'
 
@@ -22,7 +20,7 @@ ALL_SCALE=( "MIDDLE") # config of pseudolabels
 LABEL_SETS=0 # 0 for lower-abdomen group, 1 for upper-abdomen group
 EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled.
 # use [1,4] for upper-abdomen, or [] for setting 1 by Roy et al.
-SUPP_ID='[4]' # using the fifth scan in the validation set as support. 
+SUPP_ID='[4]' # using the fifth scan in the validation set as support.
 
 echo ===================================
 
@@ -49,7 +47,7 @@ do
     'usealign=True' \
     'optim_type=sgd' \
     num_workers=$NWORKER \
-    scan_per_load=-1 \ # loading the entire dataset
+    scan_per_load=-1 \
     validation_interval=$VAL_INTERVAL \
     label_sets=$LABEL_SETS \
     'use_wce=True' \

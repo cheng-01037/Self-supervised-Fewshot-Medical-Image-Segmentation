@@ -65,7 +65,7 @@ class MultiProtoAsConv(nn.Module):
             return pred_mask.unsqueeze(1), [pred_mask], vis_dict  # just a placeholder. pred_mask returned as [1, way(1), h, w]
 
         # no need to merge with gridconv+
-        else mode == 'gridconv': # using local prototypes only
+        elif mode == 'gridconv': # using local prototypes only
 
             input_size = qry.shape
             nch = input_size[1]
