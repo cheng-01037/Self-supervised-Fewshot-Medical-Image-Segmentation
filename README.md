@@ -76,7 +76,4 @@ run `examples/train_ssl_abdominal_mri.sh`
 
 This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
 
-### Contacts:
-
-Please email to c.ouyang@imperial.ac.uk for questions and information.
 
