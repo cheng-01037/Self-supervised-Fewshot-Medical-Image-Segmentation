@@ -37,7 +37,6 @@ Pillow==5.3.0
 sacred==0.7.5
 scikit-image==0.14.0
 SimpleITK==1.2.3
-ensorboard==2.1.0
 tensorboardX==1.4
 torch==1.3.0
 torchvision==0.4.1
@@ -76,7 +75,5 @@ run `examples/train_ssl_abdominal_mri.sh`
 
 This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
 
-### Contacts:
 
-Please email to c.ouyang@imperial.ac.uk for questions and information.
 
