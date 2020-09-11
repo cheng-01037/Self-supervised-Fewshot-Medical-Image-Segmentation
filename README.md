@@ -58,19 +58,6 @@ run `./data_preprocessing/CHAOST2/png_gth_to_nii.ipynp` to convert ground truth 
 run `./data_preprocessing/CHAOST2/image_normalize.ipynb`
 
 3. Generating pseudolabels
-<<<<<<< HEAD
-
-run `./data_preprocessing/CHAOST2/pseudolabel_gen.ipynb`
-
-4. Setting up experiments, e.g. noting class-slice indexing
-
-run `./data_preprocessing/CHAOST2/class_slice_index_gen.ipynb`
-
-You are also highly welcomed to use this pre-processing pipeline for evaluating few-shot medical image segmentation in future. Please consider citing our paper and the the original [CHAOS challenge](https://chaos.grand-challenge.org/) if you find this pipeline useful. Thanks! 
-
-### 3. Running
-
-=======
 
 run `./data_preprocessing/CHAOST2/pseudolabel_gen.ipynb`
 
