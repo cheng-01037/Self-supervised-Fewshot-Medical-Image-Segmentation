@@ -69,10 +69,9 @@ You are also highly welcomed to use this pre-processing pipeline for evaluating 
 
 ### 3. Running
 
-run `examples/train_ssl_abdominal_mri.sh` or `examples/test_ssl_abdominal_mri.sh`
+run `./examples/train_ssl_abdominal_mri.sh` or `./examples/test_ssl_abdominal_mri.sh`
 
 ### 4. Acknowledgement
 
 This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
-
 
