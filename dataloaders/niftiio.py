@@ -1,17 +1,15 @@
 """
-for io with nifti data
+Utils for datasets
 """
-import os
-import sys
-import nibabel as nib
 import numpy as np
-import pdb
+
+import numpy as np
 import SimpleITK as sitk
+
 
 def read_nii_bysitk(input_fid, peel_info = False):
     """ read nii to numpy through simpleitk
-    Args:
-        peelinfo:   peel direction, origin, spacing and metadata out
+        peelinfo: taking direction, origin, spacing and metadata out
     """
     img_obj = sitk.ReadImage(input_fid)
     img_np = sitk.GetArrayFromImage(img_obj)
@@ -26,14 +24,16 @@ def read_nii_bysitk(input_fid, peel_info = False):
     else:
         return img_np
 
-def np2itk(img, ref_obj):
+def convert_to_sitk(input_mat, peeled_info):
     """
-    img: numpy array
-    ref_obj: reference sitk object for copying information from
+    write a numpy array to sitk image object with essential meta-data
     """
-    itk_obj = sitk.GetImageFromArray(img)
-    itk_obj.SetSpacing( ref_obj.GetSpacing() )
-    itk_obj.SetOrigin( ref_obj.GetOrigin()  )
-    itk_obj.SetDirection( ref_obj.GetDirection()  )
-    return itk_obj
+    nii_obj = sitk.GetImageFromArray(input_mat)
+    if peeled_info:
+        nii_obj.SetSpacing(  peeled_info["spacing"] )
+        nii_obj.SetOrigin(   peeled_info["origin"] )
+        nii_obj.SetDirection(peeled_info["direction"] )
+    return nii_obj
+
+
 

@@ -27,7 +27,6 @@ class FewShotSeg(nn.Module):
     ALPNet
     Args:
         in_channels:        Number of input channels
-        pretrained_path:    Path of a pre-trained model. This overrides ms-coco initialization
         cfg:                Model configurations
     """
     def __init__(self, in_channels=3, pretrained_path=None, cfg=None):
@@ -46,8 +45,9 @@ class FewShotSeg(nn.Module):
         else:
             raise NotImplementedError(f'Backbone network {self.config["which_model"]} not implemented')
 
-        if self.config["reload_model_path"]:
-            self.load_state_dict(torch.load(self.config["reload_model_path"]))
+        if self.pretrained_path:
+            self.load_state_dict(torch.load(self.pretrained_path))
+            print(f'###### Pre-trained model f{self.pretrained_path} has been loaded ######')
 
     def get_cls(self):
         """
