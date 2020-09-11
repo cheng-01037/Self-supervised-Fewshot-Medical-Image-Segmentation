@@ -69,7 +69,7 @@ You are also highly welcomed to use this pre-processing pipeline for evaluating 
 
 ### 3. Running
 
-run `examples/train_ssl_abdominal_mri.sh`
+run `examples/train_ssl_abdominal_mri.sh` or `examples/test_ssl_abdominal_mri.sh`
 
 ### 4. Acknowledgement
 
