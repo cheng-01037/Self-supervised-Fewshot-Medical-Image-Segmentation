@@ -33,7 +33,7 @@ jupyter==1.0.0
 nibabel==2.5.1
 numpy==1.15.1
 opencv-python==4.1.1.26
-Pillow==5.3.0
+Pillow==7.1.0 
 sacred==0.7.5
 scikit-image==0.14.0
 SimpleITK==1.2.3
@@ -69,7 +69,7 @@ You are also highly welcomed to use this pre-processing pipeline for evaluating 
 
 ### 3. Running
 
-run `examples/train_ssl_abdominal_mri.sh` or `examples/test_ssl_abdominal_mri.sh`
+run `./examples/train_ssl_abdominal_mri.sh` or `./examples/test_ssl_abdominal_mri.sh`
 
 ### 4. Acknowledgement
 
