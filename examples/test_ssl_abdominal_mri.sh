@@ -2,9 +2,9 @@
 GPUID1=0
 export CUDA_VISIBLE_DEVICES=$GPUID1
 
-####### Shared configs
+####### Shared configs ######
 PROTO_GRID=8 # using 32 / 8 = 4, 4-by-4 prototype pooling window during training
-CPT="myexperiments"
+CPT="myexp"
 DATASET='CHAOST2_Superpix'
 NWORKER=4
 
@@ -14,7 +14,7 @@ LABEL_SETS=0 # 0 for lower-abdomen group, 1 for upper-abdomen group
 EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled.
 # use [1,4] for upper-abdomen, or [] for setting 1 by Roy et al.
 
-###### Training configs ######
+###### Training configs (irrelavent in testing) ######
 NSTEP=100100
 DECAY=0.95
 
@@ -31,19 +31,22 @@ for EVAL_FOLD in "${ALL_EV[@]}"
 do
     for SUPERPIX_SCALE in "${ALL_SCALE[@]}"
     do
-    PREFIX="train_${DATASET}_lbgroup${LABEL_SETS}_scale_${SUPERPIX_SCALE}_vfold${EVAL_FOLD}"
+    PREFIX="test_vfold${EVAL_FOLD}"
     echo $PREFIX
-    LOGDIR="./exps/${CPT}_${SUPERPIX_SCALE}_${LABEL_SETS}"
+    LOGDIR="./exps/${CPT}"
 
     if [ ! -d $LOGDIR ]
     then
         mkdir $LOGDIR
     fi
 
-    python3 training.py with \
+    RELOAD_PATH='please feed the path to the model weights here' # path to the reloaded model
+
+    python3 validation.py with \
     'modelname=dlfcn_res101' \
     'usealign=True' \
     'optim_type=sgd' \
+    reload_model_path=$RELOAD_PATH \
     num_workers=$NWORKER \
     scan_per_load=-1 \
     label_sets=$LABEL_SETS \
