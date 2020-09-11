@@ -24,4 +24,16 @@ def read_nii_bysitk(input_fid, peel_info = False):
     else:
         return img_np
 
+def convert_to_sitk(input_mat, peeled_info):
+    """
+    write a numpy array to sitk image object with essential meta-data
+    """
+    nii_obj = sitk.GetImageFromArray(imput_mat)
+    if peel_info:
+        nii_obj.SetSpacing(  peeled_info["spacing"] )
+        nii_obj.SetOrigin(   peeled_info["origin"] )
+        nii_obj.SetDirection(peeled_info["direction"] )
+    return nii_obj
+
+
 
