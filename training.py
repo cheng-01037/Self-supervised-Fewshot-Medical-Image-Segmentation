@@ -53,7 +53,6 @@ def main(_run, _config, _log):
     ### Training set
     data_name = _config['dataset']
     if data_name == 'SABS_Superpix':
-        raise NotImplementedError
         baseset_name = 'SABS'
     elif data_name == 'C0_Superpix':
         raise NotImplementedError

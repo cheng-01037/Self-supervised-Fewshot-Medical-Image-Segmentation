@@ -73,7 +73,7 @@ def get_normalize_op(modality, fids):
         total_val = 0
         n_pix = 0
         for fid in scan_fids:
-            in_img = read_nii_image(fid)
+            in_img = read_nii_bysitk(fid)
             total_val += in_img.sum()
             n_pix += np.prod(in_img.shape)
             del in_img
@@ -81,7 +81,7 @@ def get_normalize_op(modality, fids):
 
         total_var = 0
         for fid in scan_fids:
-            in_img = read_nii_image(fid)
+            in_img = read_nii_bysitk(fid)
             total_var += np.sum((in_img - meanval) ** 2 )
             del in_img
         var_all = total_var / n_pix
