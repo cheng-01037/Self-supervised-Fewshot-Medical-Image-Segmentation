@@ -15,6 +15,7 @@ from models.grid_proto_fewshot import FewShotSeg
 
 from dataloaders.dev_customized_med import med_fewshot_val
 from dataloaders.ManualAnnoDatasetv2 import ManualAnnoDataset
+from dataloaders.GenericSuperDatasetv2 import SuperpixelDataset
 from dataloaders.dataset_utils import DATASET_INFO, get_normalize_op
 from dataloaders.niftiio import convert_to_sitk
 
@@ -53,7 +54,6 @@ def main(_run, _config, _log):
     ### Training set
     data_name = _config['dataset']
     if data_name == 'SABS_Superpix':
-        raise NotImplementedError
         baseset_name = 'SABS'
         max_label = 13
     elif data_name == 'C0_Superpix':
