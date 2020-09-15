@@ -11,9 +11,14 @@ NWORKER=4
 
 ALL_EV=( 0) # 5-fold cross validation (0, 1, 2, 3, 4)
 ALL_SCALE=( "MIDDLE") # config of pseudolabels
-LABEL_SETS=0 # 0 for lower-abdomen group, 1 for upper-abdomen group
-EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled.
-# use [1,4] for upper-abdomen, or [] for setting 1 by Roy et al.
+
+### Use L/R kidney as testing classes
+LABEL_SETS=0 
+EXCLU='[2,3]' # setting 2: excluding kidneies in training set to test generalization capability even though they are unlabeled. Use [] for setting 1 by Roy et al.
+
+### Use Liver and spleen as testing classes
+# LABEL_SETS=1 
+# EXCLU='[1,4]' 
 
 ###### Training configs ######
 NSTEP=100100
@@ -24,7 +29,7 @@ SNAPSHOT_INTERVAL=25000 # interval for saving snapshot
 SEED='1234'
 
 ###### Validation configs ######
-SUPP_ID='[4]' # using the fifth scan in the validation set as support.
+SUPP_ID='[4]' #  # using the additionally loaded scan as support
 
 echo ===================================
 
