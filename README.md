@@ -8,8 +8,7 @@
 
 Few-shot semantic segmentation (FSS) has great potential for medical imaging applications. Most of the existing FSS techniques require abundant annotated semantic classes for training. However, these methods may not be applicable for medical images due to the lack of annotations. To address this problem we make several contributions: (1) A novel self-supervised FSS framework for medical images in order to eliminate the requirement for annotations during training. Additionally, superpixel-based pseudo-labels are generated to provide supervision; (2) An adaptive local prototype pooling module plugged into prototypical networks, to solve the common challenging foreground-background imbalance problem in medical image segmentation; (3) We demonstrate the general applicability of the proposed approach for medical images using three different tasks: abdominal organ segmentation for CT and MRI, as well as cardiac segmentation for MRI. Our results show that, for medical image segmentation, the proposed method outperforms conventional FSS methods which require manual annotations for training.
 
-### NOTE: This repository is still UNDER CONSTRUCTION and UNTESTED and will be updated in future.
-![](./pigeon.jpg)
+**We are actively updating this repository**
 
 If you find this code base useful, please cite our paper. Thanks!
 
@@ -22,9 +21,9 @@ If you find this code base useful, please cite our paper. Thanks!
 }
 ```
 
-### 1. Setup
+### 1. Dependencies
 
-Install essential dependencies (see `requirements.txt`) 
+Please install essential dependencies (see `requirements.txt`) 
 
 ```
 dcm2nii
@@ -37,41 +36,55 @@ Pillow==7.1.0
 sacred==0.7.5
 scikit-image==0.14.0
 SimpleITK==1.2.3
-tensorboardX==1.4
 torch==1.3.0
 torchvision==0.4.1
-tqdm==4.32.2
 ```
 
-### 2. Data Pre-processing and Pseudolabel Generation 
+### 2. Data pre-processing 
 
-Abdominal MRI:
+**Abdominal MRI**
 
-1. Converting downloaded [CHAOS dataset](https://chaos.grand-challenge.org/) (T2 fold) to `nii` files in 3D for the ease of reading
+0. Download [Combined Healthy Abdominal Organ Segmentation dataset](https://chaos.grand-challenge.org/) and put the `/MR` folder under `./data/CHAOST2/` directory
 
-run `./data_preprocessing/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files
+1. Converting downloaded data (T2 fold) to `nii` files in 3D for the ease of reading
 
-run `./data_preprocessing/CHAOST2/png_gth_to_nii.ipynp` to convert ground truth with `png` format to nifti
+run `./data/CHAOST2/dcm_img_to_nii.sh` to convert dicom images to nifti files
+
+run `./data/CHAOST2/png_gth_to_nii.ipynp` to convert ground truth with `png` format to nifti
 
 2. Pre-processing downloaded images
 
-run `./data_preprocessing/CHAOST2/image_normalize.ipynb`
+run `./data/CHAOST2/image_normalize.ipynb`
 
-3. Generating pseudolabels
+**Abdominal CT**
 
-run `./data_preprocessing/CHAOST2/pseudolabel_gen.ipynb`
+0. Download [Synapse Multi-atlas Abdominal Segmentation dataset](https://www.synapse.org/#!Synapse:syn3193805/wiki/217789) and put `/img` and `/label` folders under `./data/SABS/` directory
 
-4. Setting up experiments, e.g. noting class-slice indexing
+1. Intensity windowing 
 
-run `./data_preprocessing/CHAOST2/class_slice_index_gen.ipynb`
+run `./data/SABS/intensity_normalization.ipynb` to apply abdominal window
 
-You are also highly welcomed to use this pre-processing pipeline for evaluating few-shot medical image segmentation in future. Please consider citing our paper and the the original [CHAOS challenge](https://chaos.grand-challenge.org/) if you find this pipeline useful. Thanks! 
+2. Crop irrelavent emptry background and resample images
 
-### 3. Running
+run `./data/SABS/resampling_and_roi.ipynb` 
 
-run `./examples/train_ssl_abdominal_mri.sh` or `./examples/test_ssl_abdominal_mri.sh`
+**Shared steps**
 
-### 4. Acknowledgement
+3. Build class-slice indexing for setting up experiments
 
-This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611)
+run `./data/<CHAOST2/SABS>class_slice_index_gen.ipynb`
+
+You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
+
+### 3. Pseudolabel generation
+
+run `./data_preprocessing/pseudolabel_gen.ipynb`. You might need to specify dataset within the notebook
+
+### 4. Running training and evaluation
+
+run `./examples/train_ssl_abdominal_<mri/ct>.sh` and `./examples/test_ssl_abdominal_<mri/ct>.sh`
+
+### Acknowledgement
+
+This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611). Should you have any further questions, please [let us know](c.ouyang@imperial.ac.uk). Thanks again for your interest.
 
