@@ -35,5 +35,14 @@ def convert_to_sitk(input_mat, peeled_info):
         nii_obj.SetDirection(peeled_info["direction"] )
     return nii_obj
 
-
+def np2itk(img, ref_obj):
+    """
+    img: numpy array
+    ref_obj: reference sitk object for copying information from
+    """
+    itk_obj = sitk.GetImageFromArray(img)
+    itk_obj.SetSpacing( ref_obj.GetSpacing() )
+    itk_obj.SetOrigin( ref_obj.GetOrigin()  )
+    itk_obj.SetDirection( ref_obj.GetDirection()  )
+    return itk_obj
 
