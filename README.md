@@ -74,9 +74,9 @@ run `./data/SABS/resampling_and_roi.ipynb`
 
 run `./data/<CHAOST2/SABS>class_slice_index_gen.ipynb`
 
-```
+`
 You are highly welcomed to use this pre-processing pipeline in your own work for evaluating few-shot medical image segmentation in future. Please consider citing our paper (as well as the original sources of data) if you find this pipeline useful. Thanks! 
-```
+`
 
 ### 3. Pseudolabel generation
 
