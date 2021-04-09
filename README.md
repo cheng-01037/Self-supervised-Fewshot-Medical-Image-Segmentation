@@ -88,5 +88,5 @@ run `./examples/train_ssl_abdominal_<mri/ct>.sh` and `./examples/test_ssl_abdomi
 
 ### Acknowledgement
 
-This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611). Should you have any further questions, please [let us know](c.ouyang@imperial.ac.uk). Thanks again for your interest.
+This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611). Should you have any further questions, please [let us know]. Thanks again for your interest.
 
