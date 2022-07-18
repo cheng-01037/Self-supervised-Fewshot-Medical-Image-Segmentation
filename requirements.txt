@@ -2,7 +2,7 @@ dcm2nii
 json5==0.8.5
 jupyter==1.0.0
 nibabel==2.5.1
-numpy==1.19.0
+numpy==1.22.0
 opencv-python==4.2.0.32
 Pillow>=8.1.1
 sacred==0.7.5
