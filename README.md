@@ -64,7 +64,7 @@ run `./data/CHAOST2/image_normalize.ipynb`
 
 run `./data/SABS/intensity_normalization.ipynb` to apply abdominal window.
 
-2. Crop irrelavent emptry background and resample images
+2. Crop irrelevant empty background and resample images
 
 run `./data/SABS/resampling_and_roi.ipynb` 
 
