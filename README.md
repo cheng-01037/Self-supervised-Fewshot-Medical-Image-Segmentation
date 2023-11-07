@@ -86,6 +86,8 @@ run `./data_preprocessing/pseudolabel_gen.ipynb`. You might need to specify whic
 
 run `./examples/train_ssl_abdominal_<mri/ct>.sh` and `./examples/test_ssl_abdominal_<mri/ct>.sh`
 
+The results should be easy to re-produce by following the steps described above. Still, if pretrained models are needed, you can find them [here](https://drive.google.com/file/d/1n_y5IDzMAQU8MIAYXLABSZ6003eJdbAe/view?usp=sharing) for 1-shot abdominal CT models on setting 2 (objects of interests excluded even though unlabeled during training), without the boundary prior loss. 
+
 ### Acknowledgement
 
 This code is based on vanilla [PANet](https://github.com/kaixin96/PANet) (ICCV'19) by [Kaixin Wang](https://github.com/kaixin96) et al. The data augmentation tools are from Dr. [Jo Schlemper](https://github.com/js3611). Should you have any further questions, please let us know. Thanks again for your interest.
